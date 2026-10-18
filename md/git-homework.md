@@ -47,8 +47,8 @@ commit အသစ်တွေ လုပ်ထားတယ်။ main မှာ co
 main မှာ A နဲ့ B commit ရှိတယ်။
 B ကနေ feature ခွဲပြီး အလုပ်နှစ်ခု လုပ်ထားတယ်။
 
-- C = Login form ထည့်တယ်။
-- D = Login button ထည့်တယ်။
+- C = Login form ထည့်
+- D = Login button ထည့်
 
 #### Merge မလုပ်ခင်
 
@@ -59,8 +59,8 @@ flowchart LR
     C --> D["D: Login button — feature"]
 ```
 
-- main ရဲ့ history က A → B ဖြစ်တယ်။
-- feature ရဲ့ history က A → B → C → D ဖြစ်တယ်။
+- main ရဲ့ history က A → B 
+- feature ရဲ့ history က A → B → C → D 
 
 #### အသုံးပြုရတဲ့ Command
 
@@ -69,9 +69,9 @@ git switch main
 git merge --ff-only feature
 ```
 
-1. `git switch main` က main branch ကို ပြောင်းတယ်။
+1. `git switch main` က main branch ကို ပြောင်း
 2. `git merge --ff-only feature` က main ကို
-   feature ရဲ့ နောက်ဆုံး commit D ဆီ ရွှေ့ပေးတယ်။
+   feature ရဲ့ နောက်ဆုံး commit D ဆီ ရွှေ့ပေး
 
 #### Merge လုပ်ပြီး
 
@@ -82,13 +82,13 @@ flowchart LR
     C --> D["D — main, feature"]
 ```
 
-အခုဆိုရင် main နဲ့ feature နှစ်ခုလုံးက D ကို ညွှန်းနေတယ်။
-main ထဲမှာ Login form နဲ့ Login button ရော ပါလာပြီ။
+အခုဆိုရင် main နဲ့ feature နှစ်ခုလုံးက D ကို ညွှန်းနေ
+main ထဲမှာ Login form နဲ့ Login button ရော ပါလာ
 
 **Commit အသစ် မလုပ်ဘဲ main ကို B ကနေ D ဆီ
 ရွှေ့ပေးတာကို Fast-forward merge လို့ ခေါ်တယ်။**
 
-`--ff-only` က fast-forward လုပ်လို့ရမှ ပေါင်းပေးတယ်။
+`--ff-only` က fast-forward လုပ်လို့ရမှ ပေါင်းပေး
 branch နှစ်ခုလုံးမှာ သီးခြား commit အသစ်ရှိနေရင်
 merge မလုပ်ဘဲ ရပ်သွားပါမယ်။
 
@@ -102,8 +102,8 @@ main branch ကနေ feature branch ခွဲပြီးနောက် main b
 
 #### ဥပမာ
 
-main branch မှာ A နဲ့ B commit ရှိတယ်။
-B ကနေ feature branch ခွဲထားတယ်။
+main branch မှာ A နဲ့ B commit ရှိ
+B ကနေ feature branch ခွဲထား
 
 - feature branch မှာ C = Login page ထပ်ထည့်
 - main branch မှာ D = Contact page ထပ်ထည့်
@@ -117,12 +117,12 @@ flowchart TD
     B --> C["C: Login page — feature"]
 ```
 
-- main ရဲ့ history က A → B → D ဖြစ်တယ်။
-- feature ရဲ့ history က A → B → C ဖြစ်တယ်။
+- main ရဲ့ history က A → B → D 
+- feature ရဲ့ history က A → B → C 
 
 ဒီဥပမာမှာ နှစ်ဘက်လုံးမှာ အလုပ်အသစ်ရှိလို့ main ကို C ဆီ
 ရွှေ့ပေးရုံနဲ့ မရတော့ဘူး။ C နဲ့ D ရဲ့အလုပ်တွေကို
-ပေါင်းဖို့ လိုတယ်။
+ပေါင်းဖို့ လို
 
 #### အသုံးပြုမယ့် Command
 
@@ -131,9 +131,9 @@ git switch main
 git merge feature
 ```
 
-1. `git switch main` က main branch ကို ပြောင်းတယ်။
+1. `git switch main` က main branch ကို ပြောင်း
 2. `git merge feature` က feature ရဲ့ Login အလုပ်နဲ့
-   main ရဲ့ Contact အလုပ်ကို ပေါင်းပေးတယ်။
+   main ရဲ့ Contact အလုပ်ကို ပေါင်းပေး
 
 #### Merge လုပ်ပြီး
 
@@ -146,12 +146,12 @@ flowchart TD
     C --> M
 ```
 
-M ဆိုတဲ့ merge commit အသစ် ရလာတယ်။
-M က C နဲ့ D ကို ချိတ်ထားပြီး နှစ်ဘက်လုံးရဲ့အလုပ် ပါတယ်။
+M ဆိုတဲ့ merge commit အသစ် ရလာ
+M က C နဲ့ D ကို ချိတ်ထားပြီး နှစ်ဘက်လုံးရဲ့အလုပ် ပါ
 
 - main က M ကို ညွှန်းနေတယ်။
 - feature က C ကို ညွှန်းနေဆဲ။
-- မူရင်း C နဲ့ D commit တွေ ဆက်ရှိနေတယ်။
+- မူရင်း C နဲ့ D commit တွေ ဆက်ရှိနေ
 
 **Branch နှစ်ခုရဲ့အလုပ်ကို merge commit အသစ်နဲ့
 ပေါင်းချိတ်တာကို Non-fast-forward merge လို့ ခေါ်တယ်။**
@@ -159,7 +159,7 @@ M က C နဲ့ D ကို ချိတ်ထားပြီး နှစ်�
 #### --no-ff ဆိုတာ
 
 Fast-forward လုပ်လို့ရတဲ့အခြေအနေမှာတောင်
-merge commit သီးသန့် ထားချင်ရင် `--no-ff` သုံးတယ်။
+merge commit သီးသန့် ထားချင်ရင် `--no-ff` သုံး
 
 ```bash
 git switch main
@@ -248,17 +248,17 @@ main ပေါ်မှာ ရှိနေလို့ HEAD လည်း D မ�
 
 ### 1. Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
 
-လက်ရှိ history က A → B → C → D ဖြစ်တယ်။
+လက်ရှိ history က A → B → C → D 
 အခု D မှာ ထည့်ထားတဲ့ Login button ကို
 ပြန်ဖယ်ချင်တယ်။
 
-D ပေါ်မှာ ရှိနေတဲ့အချိန် revert ကို သုံးမယ်—
+D ပေါ်မှာ ရှိနေတဲ့အချိန် revert ကို သုံးမယ်
 
 ```bash
 git revert HEAD
 ```
 
-ဒီအခြေအနေမှာ HEAD က လက်ရှိရောက်နေတဲ့ D commit ကို ရည်ညွှန်းတာပါ။
+ဒီအခြေအနေမှာ HEAD က လက်ရှိရောက်နေတဲ့ D commit ကို ရည်ညွှန်း
 
 ```mermaid
 flowchart LR
@@ -269,7 +269,7 @@ flowchart LR
 ```
 
 Git က D ကို မဖျက်ဘဲ D ရဲ့အပြောင်းအလဲကို
-ပြန်ပြောင်းတဲ့ R commit အသစ် ထည့်ပေးတယ်။
+ပြန်ပြောင်းတဲ့ R commit အသစ် ထည့်ပေး
 
 - Login button ထည့်ထားတာ ပြန်ဖယ်သွား
 - D commit လည်း ဆက်ရှိ
@@ -295,7 +295,7 @@ D ရဲ့ အပြောင်းအလဲတွေလည်း staging area 
  `--soft` က လက်ရှိ working files နဲ့
 staging area ကို မပြောင်းဘဲ branch ကိုပဲ ပြန်ရွှေ့တာပါ။
 
-`git add` ထပ်မလိုဘဲ ပြန် commit လုပ်နိုင်တယ်။
+`git add` ထပ်မလိုဘဲ ပြန် commit လုပ်နိုင်
 
 ```bash
 git commit -m "Add login button"
