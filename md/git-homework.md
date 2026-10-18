@@ -245,7 +245,7 @@ main ပေါ်မှာ ရှိနေလို့ HEAD လည်း D မ�
 
 
 
-### 3. Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
+### 1. Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
 
 လက်ရှိ history က A → B → C → D ဖြစ်တယ်။
 အခု D မှာ ထည့်ထားတဲ့ Login button ကို
@@ -273,3 +273,46 @@ Git က D ကို မဖျက်ဘဲ D ရဲ့အပြောင်းအ
 - Login button ထည့်ထားတာ ပြန်ဖယ်သွား
 - D commit လည်း ဆက်ရှိ
 - ပြန်ပြင်ထားတဲ့ R commit လည်း ရှိ
+
+
+### 4. Reset — Branch ကို အဟောင်းဆီ ပြန်ရွှေ့မယ်
+
+မူလ A → B → C → D အခြေအနေကနေ စ
+
+
+#### Soft Reset
+
+```bash
+git reset --soft HEAD~1
+```
+
+main က C ကို ပြန်ရောက်
+
+D မှာရေးထားတဲ့ Login button code က ဖိုင်ထဲမှာ ကျန်
+D ရဲ့ အပြောင်းအလဲတွေလည်း staging area ထဲမှာ ရှိနေ
+
+ `--soft` က လက်ရှိ working files နဲ့
+staging area ကို မပြောင်းဘဲ branch ကိုပဲ ပြန်ရွှေ့တာပါ။
+
+`git add` ထပ်မလိုဘဲ ပြန် commit လုပ်နိုင်တယ်။
+
+```bash
+git commit -m "Add login button"
+```
+
+
+#### Mixed Reset
+
+```bash
+git reset --mixed HEAD~1
+```
+
+- main က C ကို ပြန်ရောက်
+- Login button code က ဖိုင်ထဲမှာ ကျန်
+- Button အပြောင်းအလဲက stage ထဲ မရှိတော့
+- ပြန် add လုပ်ပြီးမှ commit လုပ်ရမယ်။
+
+```bash
+git add login.html
+git commit -m "Add login button"
+```
