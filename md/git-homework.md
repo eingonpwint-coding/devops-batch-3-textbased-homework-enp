@@ -329,3 +329,119 @@ C တုန်းကအတိုင်း ပြန်ထား
 
 ဒီဥပမာမှာ Login button code ပြန်ပျောက်သွား
 
+
+
+## 4. Rebase vs Merge Cheat Sheet
+
+Merge နဲ့ Rebase နှစ်ခုလုံးက branch တွေရဲ့အလုပ်တွေကို
+ပေါင်းစပ်ဖို့ သုံးတယ်။ Commit history ထားပုံ ကွာတယ်။
+
+### စတင်အခြေအနေ
+
+A နဲ့ B commit ရှိတဲ့ main ကနေ feature ခွဲထား
+
+- feature မှာ C = Login form ရေး
+- feature မှာ D = Login button ထည့်
+- main မှာ E = Contact page ထည့်
+
+```mermaid
+flowchart TD
+    A[A] --> B[B]
+    B --> E["E: Contact page — main"]
+    B --> C["C: Login form"]
+    C --> D["D: Login button — feature"]
+```
+
+| Branch | Commit history |
+|---|---|
+| main | A → B → E |
+| feature | A → B → C → D |
+
+### 1. Merge
+
+Feature ရဲ့ Login အလုပ်တွေကို main ထဲ ပေါင်းမယ်။
+
+```bash
+git switch main
+git merge feature
+```
+
+
+#### လုပ်ပြီးနောက်
+
+```mermaid
+flowchart TD
+    A[A] --> B[B]
+    B --> E[E]
+    B --> C[C]
+    C --> D["D — feature"]
+    E --> M["M — main"]
+    D --> M
+```
+
+- E နဲ့ D ကို ချိတ်တဲ့ M merge commit အသစ် ရ
+- မူရင်း C၊ D၊ E commit တွေ မပြောင်းဘူး။
+- main က M ကို ညွှန်း
+- feature က D ကို ညွှန်းနေဆဲ။
+- main မှာ Contact page နဲ့ Login အလုပ်တွေ ပါလာ
+
+
+
+### 2. Rebase
+
+ကိုယ့် feature အလုပ်တွေကို main ရဲ့ နောက်ဆုံးအလုပ်
+E အပေါ်မှာ ပြန်တင်မယ်။
+
+```bash
+git switch feature
+git rebase main
+```
+
+#### လုပ်ပြီးနောက်
+
+```mermaid
+flowchart LR
+    A[A] --> B[B]
+    B --> E["E — main"]
+    E --> C2["C′: Login form"]
+    C2 --> D2["D′: Login button — feature"]
+```
+
+Git က—
+
+1. main ရဲ့ E ကို base အသစ်အဖြစ် ယူ
+2. C ရဲ့ Login form အပြောင်းအလဲကို E အပေါ်
+   ပြန်တင်ပြီး C′ commit လုပ်
+3. D ရဲ့ Login button အပြောင်းအလဲကို C′ အပေါ်
+   ပြန်တင်ပြီး D′ commit လုပ်
+
+C′ နဲ့ D′ က commit အသစ်တွေဖြစ်လို့
+မူရင်း C၊ D နဲ့ commit ID မတူတော့ဘူး။
+
+| Branch | Rebase မလုပ်ခင် | Rebase လုပ်ပြီး |
+|---|---|---|
+| main | A → B → E | A → B → E |
+| feature | A → B → C → D | A → B → E → C′ → D′ |
+
+**Rebase က ကိုယ့် commit တွေကို base အသစ်အပေါ်
+ပြန်တင်တာပါ။ ဒီအချိန်မှာ main က E မှာပဲ ရှိသေးတယ်။**
+
+### Rebase ပြီး main ထဲ ထည့်မယ်
+
+main မှာ commit အသစ် ထပ်မလုပ်ထားဘူးဆိုရင်—
+
+```bash
+git switch main
+git merge --ff-only feature
+```
+
+```mermaid
+flowchart LR
+    A[A] --> B[B]
+    B --> E[E]
+    E --> C2["C′"]
+    C2 --> D2["D′ — main, feature"]
+```
+
+အခု main က D′ ဆီ ရောက်သွားပြီး
+Contact page နဲ့ Login အလုပ်တွေ ပါလာ
