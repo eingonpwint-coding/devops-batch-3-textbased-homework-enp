@@ -1,6 +1,6 @@
 # Git_HomeWork
 
-## Git Branching Cheat Sheet
+## 1. Git Branching Cheat Sheet
 
 Branch ဆိုတာ အလုပ်အသစ်တစ်ခုကို သီးခြားခွဲလုပ်ဖို့
 သုံးတာပါ။
@@ -221,7 +221,7 @@ Git မှာ commit လုပ်ထားတဲ့ အခြေအနေအဟ�
 မှားထားတဲ့အလုပ်ကိုလည်း ပြန်ပြင်နိုင်
 
 
-### Example Commit History
+### 3.1 Example Commit History
 
 ```mermaid
 flowchart LR
@@ -246,7 +246,7 @@ main ပေါ်မှာ ရှိနေလို့ HEAD လည်း D မ�
 
 
 
-### 1. Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
+### 3.2 Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
 
 လက်ရှိ history က A → B → C → D 
 အခု D မှာ ထည့်ထားတဲ့ Login button ကို
@@ -276,7 +276,7 @@ Git က D ကို မဖျက်ဘဲ D ရဲ့အပြောင်းအ
 - ပြန်ပြင်ထားတဲ့ R commit လည်း ရှိ
 
 
-### 4. Reset — Branch ကို အဟောင်းဆီ ပြန်ရွှေ့မယ်
+### 3.3 Reset — Branch ကို အဟောင်းဆီ ပြန်ရွှေ့မယ်
 
 မူလ A → B → C → D အခြေအနေကနေ စ
 
