@@ -92,3 +92,75 @@ branch နှစ်ခုလုံးမှာ သီးခြား commit အ�
 merge မလုပ်ဘဲ ရပ်သွားပါမယ်။
 
 
+
+### 2.2 Non-fast-forward Merge
+
+main branch ကနေ feature branch ခွဲပြီးနောက် main branch
+နဲ့ feature branch နှစ်ခုလုံးမှာ
+သီးခြား commit အသစ်တွေ လုပ်ထားတယ်။
+
+#### ဥပမာ
+
+main branch မှာ A နဲ့ B commit ရှိတယ်။
+B ကနေ feature branch ခွဲထားတယ်။
+
+- feature branch မှာ C = Login page ထပ်ထည့်
+- main branch မှာ D = Contact page ထပ်ထည့်
+
+#### Merge မလုပ်ခင်
+
+```mermaid
+flowchart TD
+    A[A] --> B[B]
+    B --> D["D: Contact page — main"]
+    B --> C["C: Login page — feature"]
+```
+
+- main ရဲ့ history က A → B → D ဖြစ်တယ်။
+- feature ရဲ့ history က A → B → C ဖြစ်တယ်။
+
+ဒီဥပမာမှာ နှစ်ဘက်လုံးမှာ အလုပ်အသစ်ရှိလို့ main ကို C ဆီ
+ရွှေ့ပေးရုံနဲ့ မရတော့ဘူး။ C နဲ့ D ရဲ့အလုပ်တွေကို
+ပေါင်းဖို့ လိုတယ်။
+
+#### အသုံးပြုမယ့် Command
+
+```bash
+git switch main
+git merge feature
+```
+
+1. `git switch main` က main branch ကို ပြောင်းတယ်။
+2. `git merge feature` က feature ရဲ့ Login အလုပ်နဲ့
+   main ရဲ့ Contact အလုပ်ကို ပေါင်းပေးတယ်။
+
+#### Merge လုပ်ပြီး
+
+```mermaid
+flowchart TD
+    A[A] --> B[B]
+    B --> D[D]
+    B --> C["C — feature"]
+    D --> M["M: Contact + Login — main"]
+    C --> M
+```
+
+M ဆိုတဲ့ merge commit အသစ် ရလာတယ်။
+M က C နဲ့ D ကို ချိတ်ထားပြီး နှစ်ဘက်လုံးရဲ့အလုပ် ပါတယ်။
+
+- main က M ကို ညွှန်းနေတယ်။
+- feature က C ကို ညွှန်းနေဆဲ။
+- မူရင်း C နဲ့ D commit တွေ ဆက်ရှိနေတယ်။
+
+**Branch နှစ်ခုရဲ့အလုပ်ကို merge commit အသစ်နဲ့
+ပေါင်းချိတ်တာကို Non-fast-forward merge လို့ ခေါ်တယ်။**
+
+#### --no-ff ဆိုတာ
+
+Fast-forward လုပ်လို့ရတဲ့အခြေအနေမှာတောင်
+merge commit သီးသန့် ထားချင်ရင် `--no-ff` သုံးတယ်။
+
+```bash
+git switch main
+git merge --no-ff feature
+```
