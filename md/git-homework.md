@@ -28,3 +28,67 @@ main branch ကို အရင်ပြောင်းရတယ်။
 |---|---|
 | `git switch feature` | `git checkout feature` |
 | `git switch -c feature` | `git checkout -b feature` |
+
+
+## 2. Different types of Merge strategies
+
+1. Fast-forward Merge
+2. Non-fast-forward Merge
+3. Squash Merge
+
+### 2.1 Fast-forward Merge
+
+main ကနေ feature branch ခွဲပြီးနောက် feature မှာပဲ
+commit အသစ်တွေ လုပ်ထားတယ်။ main မှာ commit အသစ် မရှိဘူး။
+
+#### ဥပမာ
+
+main မှာ A နဲ့ B commit ရှိတယ်။
+B ကနေ feature ခွဲပြီး အလုပ်နှစ်ခု လုပ်ထားတယ်။
+
+- C = Login form ထည့်တယ်။
+- D = Login button ထည့်တယ်။
+
+#### Merge မလုပ်ခင်
+
+```mermaid
+flowchart LR
+    A[A] --> B["B — main"]
+    B --> C["C: Login form"]
+    C --> D["D: Login button — feature"]
+```
+
+- main ရဲ့ history က A → B ဖြစ်တယ်။
+- feature ရဲ့ history က A → B → C → D ဖြစ်တယ်။
+
+#### အသုံးပြုရတဲ့ Command
+
+```bash
+git switch main
+git merge --ff-only feature
+```
+
+1. `git switch main` က main branch ကို ပြောင်းတယ်။
+2. `git merge --ff-only feature` က main ကို
+   feature ရဲ့ နောက်ဆုံး commit D ဆီ ရွှေ့ပေးတယ်။
+
+#### Merge လုပ်ပြီး
+
+```mermaid
+flowchart LR
+    A[A] --> B[B]
+    B --> C[C]
+    C --> D["D — main, feature"]
+```
+
+အခုဆိုရင် main နဲ့ feature နှစ်ခုလုံးက D ကို ညွှန်းနေတယ်။
+main ထဲမှာ Login form နဲ့ Login button ရော ပါလာပြီ။
+
+**Commit အသစ် မလုပ်ဘဲ main ကို B ကနေ D ဆီ
+ရွှေ့ပေးတာကို Fast-forward merge လို့ ခေါ်တယ်။**
+
+`--ff-only` က fast-forward လုပ်လို့ရမှ ပေါင်းပေးတယ်။
+branch နှစ်ခုလုံးမှာ သီးခြား commit အသစ်ရှိနေရင်
+merge မလုပ်ဘဲ ရပ်သွားပါမယ်။
+
+
