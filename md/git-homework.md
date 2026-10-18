@@ -16,6 +16,7 @@ Branch ဆိုတာ အလုပ်အသစ်တစ်ခုကို သ�
 | main ကို ပြန်ပြောင်းမယ် | `git switch main` |
 | လက်ရှိ branch နာမည်ပြောင်းမယ် | `git branch -m login` |
 | အလုပ်ပြီးတဲ့ branch ဖျက်မယ် | `git branch -d feature` |
+| ရွှေ့ခဲ့တဲ့ commit တွေ ပြန်ရှာမယ် | `git reflog` |
 
 ဖျက်မယ့် branch ပေါ်မှာ ရှိနေရင် ဖျက်လို့မရဘူး။
 main branch ကို အရင်ပြောင်းရတယ်။
@@ -316,3 +317,15 @@ git reset --mixed HEAD~1
 git add login.html
 git commit -m "Add login button"
 ```
+
+#### Hard Reset
+
+```bash
+git reset --hard HEAD~1
+```
+
+main က C ကို ပြန်ရောက်ပြီး tracked files တွေကိုပါ
+C တုန်းကအတိုင်း ပြန်ထား
+
+ဒီဥပမာမှာ Login button code ပြန်ပျောက်သွား
+
