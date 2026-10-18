@@ -211,3 +211,65 @@ S ထဲမှာ Login form၊ Login button နဲ့ အရောင်ပြ�
 တစ်ခုချင်းမပါဘဲ S တစ်ခုပဲ တိုးလာ
 
 Feature branch မှာ မူရင်း C၊ D၊ E commit တွေ ဆက်ရှိ 
+
+
+## 3. Git Time Traveling Cheat Sheet
+
+Git မှာ commit လုပ်ထားတဲ့ အခြေအနေအဟောင်းတွေကို
+ပြန်ကြည့်နိုင် 
+မှားထားတဲ့အလုပ်ကိုလည်း ပြန်ပြင်နိုင်
+
+
+### Example Commit History
+
+```mermaid
+flowchart LR
+    A["A: Home page"] --> B["B: Menu"]
+    B --> C["C: Login form"]
+    C --> D["D: Login button — main, HEAD"]
+```
+
+main က D ကို ညွှန်းနေ
+main ပေါ်မှာ ရှိနေလို့ HEAD လည်း D မှာ ရှိတယ်။
+
+- `HEAD` = အခု ကိုယ်ရောက်နေတဲ့ commit ကို ရည်ညွှန်းတယ်။ ဒီဥပမာမှာ D ပါ။
+- `HEAD~1` = ဒီဥပမာမှာ C
+- `HEAD~2` = ဒီဥပမာမှာ B
+
+| လုပ်ချင်တာ | Command |
+|---|---|
+| Commit history ကြည့်မယ် | `git log --oneline` |
+| Commit တစ်ခုရဲ့ အပြောင်းအလဲကြည့်မယ် | `git show <commit-id>` |
+| အဟောင်းကို ကြည့်ရုံကြည့်မယ် | `git switch --detach <commit-id>` |
+| main ကို ပြန်လာမယ် | `git switch main` |
+
+
+
+### 3. Revert — အပြောင်းအလဲကို ပြန်ပြောင်းတဲ့ Commit အသစ် ထည့်မယ်
+
+လက်ရှိ history က A → B → C → D ဖြစ်တယ်။
+အခု D မှာ ထည့်ထားတဲ့ Login button ကို
+ပြန်ဖယ်ချင်တယ်။
+
+D ပေါ်မှာ ရှိနေတဲ့အချိန် revert ကို သုံးမယ်—
+
+```bash
+git revert HEAD
+```
+
+ဒီအခြေအနေမှာ HEAD က လက်ရှိရောက်နေတဲ့ D commit ကို ရည်ညွှန်းတာပါ။
+
+```mermaid
+flowchart LR
+    A[A] --> B[B]
+    B --> C[C]
+    C --> D[D]
+    D --> R["R: D အလုပ်ကို ပြန်ပြောင်း — main, HEAD"]
+```
+
+Git က D ကို မဖျက်ဘဲ D ရဲ့အပြောင်းအလဲကို
+ပြန်ပြောင်းတဲ့ R commit အသစ် ထည့်ပေးတယ်။
+
+- Login button ထည့်ထားတာ ပြန်ဖယ်သွား
+- D commit လည်း ဆက်ရှိ
+- ပြန်ပြင်ထားတဲ့ R commit လည်း ရှိ
