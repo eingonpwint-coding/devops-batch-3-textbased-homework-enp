@@ -10,7 +10,6 @@ Branch ဆိုတာ အလုပ်အသစ်တစ်ခုကို သ�
 |---|---|
 | Local branch တွေကြည့်မယ် | `git branch` |
 | လက်ရှိ branch နဲ့ ဖိုင်အခြေအနေစစ်မယ် | `git status` |
-| Branch အသစ်လုပ်မယ် | `git branch feature` |
 | ရှိပြီးသား branch ကို ပြောင်းမယ် | `git switch feature` |
 | အသစ်လုပ်ပြီး ပြောင်းမယ် | `git switch -c feature` |
 | main ကို ပြန်ပြောင်းမယ် | `git switch main` |
@@ -22,13 +21,6 @@ Branch ဆိုတာ အလုပ်အသစ်တစ်ခုကို သ�
 main branch ကို အရင်ပြောင်းရတယ်။
 
 
-
-### Checkout နဲ့ Switch
-
-| Switch command | Checkout command |
-|---|---|
-| `git switch feature` | `git checkout feature` |
-| `git switch -c feature` | `git checkout -b feature` |
 
 
 ## 2. Different types of Merge strategies
