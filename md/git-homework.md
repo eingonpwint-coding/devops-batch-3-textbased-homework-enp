@@ -174,7 +174,17 @@ B ကနေ feature branch ခွဲပြီး အောက်ပါအလု�
 | D | Login button ထည့်တယ် |
 | E | Login အရောင်ပြင်တယ် |
 
-Merge မလုပ်ခင် history က—
+Merge မလုပ်ခင် 
+
+```mermaid
+flowchart TD
+    A["A"] --> B["B — main"]
+    B --> C["C: Login form"]
+    C --> D["D: Login button"]
+    D --> E["E: Login colour — feature"]
+```
+
+history က—
 
 - main: A → B
 - feature: A → B → C → D → E
@@ -194,7 +204,18 @@ git commit -m "Add complete login page"
 3. `git commit` က အလုပ်အားလုံးကို S ဆိုတဲ့ commit
    တစ်ခုအဖြစ် သိမ်း
 
-#### လုပ်ပြီးနောက်
+#### merger လုပ်ပြီး
+
+```mermaid
+flowchart TD
+    A["A"] --> B["B"]
+    B --> S["S: Complete login page — main"]
+    B --> C["C: Login form"]
+    C --> D["D: Login button"]
+    D --> E["E: Login colour — feature"]
+```
+
+
 
 - main: A → B → S
 - feature: A → B → C → D → E
