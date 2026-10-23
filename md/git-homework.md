@@ -12,7 +12,6 @@ Branch ဆိုတာ အလုပ်အသစ်တစ်ခုကို သ�
 | လက်ရှိ branch နဲ့ ဖိုင်အခြေအနေစစ်မယ် | `git status` |
 | ရှိပြီးသား branch ကို ပြောင်းမယ် | `git switch feature` |
 | အသစ်လုပ်ပြီး ပြောင်းမယ် | `git switch -c feature` |
-| main ကို ပြန်ပြောင်းမယ် | `git switch main` |
 | လက်ရှိ branch နာမည်ပြောင်းမယ် | `git branch -m login` |
 | အလုပ်ပြီးတဲ့ branch ဖျက်မယ် | `git branch -d feature` |
 | ရွှေ့ခဲ့တဲ့ commit တွေ ပြန်ရှာမယ် | `git reflog` |
